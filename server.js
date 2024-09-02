@@ -1,12 +1,16 @@
 const express = require("express");
-const port = 7777;
+const cors = require("cors");
+const port = process.env.PORT || 5000;
 const app = express();
 const { userRouter } = require("./routes/index.js");
 
-// Middleware to parse JSON bodies
+// Middleware
 app.use(express.json());
+app.use(cors());
 
-// Use the routes from routes.js
+
+
+// Routes from
 app.use("/users", userRouter);
 
 app.listen(port, () => {
